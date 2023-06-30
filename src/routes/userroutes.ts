@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const userRouter = Router();
 
-import usercontroller from '../controller/usercontroller';
+import usercontroller from '../controllers/usercontroller';
 import signUpValidationMiddleware from '../middleawre/validate';
 
 userRouter
