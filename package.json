@@ -1,12 +1,12 @@
 {
   "name": "locale-map",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/omotega/locale-map.git",
   "author": "omotega <tomoyibo@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "npx  ts-node ./src/server.ts",
+    "start": "node dist/server.js",
     "build": "tsc",
     "test": "jest",
     "lint": "eslint . --ext .ts",
