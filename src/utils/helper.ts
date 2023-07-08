@@ -26,6 +26,10 @@ async function genKey(): Promise<string> {
   return key;
 }
 
+async function genRandomStrings(): Promise<string> {
+  const randString = crypto.randomBytes(16).toString('hex');
+  return randString;
+}
 async function capitalizeFirstletter(str: any) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -35,5 +39,6 @@ export default {
   comparePassword,
   genApiKey,
   genKey,
-  capitalizeFirstletter
+  capitalizeFirstletter,
+  genRandomStrings
 };

@@ -1,23 +1,32 @@
 import { Router } from 'express';
 import locationController from '../controllers/location';
 import addAuthorization from '../middleawre/auth';
+import CacheMiddleware from '../middleawre/cache';
 
 const locationRouter = Router();
 
 locationRouter
   .route('/searchregion')
-  .get(addAuthorization, locationController.searchByRegion);
+  .get(addAuthorization, CacheMiddleware, locationController.searchByRegion);
 locationRouter
   .route('/searchstate')
-  .get(addAuthorization, locationController.searchByState);
+  .get(addAuthorization, CacheMiddleware, locationController.searchByState);
 locationRouter
   .route('/searchlga')
-  .get(addAuthorization, locationController.searchByLga);
+  .get(addAuthorization, CacheMiddleware, locationController.searchByLga);
 locationRouter
   .route('/searchstatewithlga')
-  .get(addAuthorization, locationController.searchForStateWithLga);
+  .get(
+    addAuthorization,
+    CacheMiddleware,
+    locationController.searchForStateWithLga
+  );
 locationRouter
   .route('/searchregionwithstate')
-  .get(addAuthorization, locationController.searchRegionwithState);
+  .get(
+    addAuthorization,
+    CacheMiddleware,
+    locationController.searchRegionwithState
+  );
 
 export default locationRouter;
