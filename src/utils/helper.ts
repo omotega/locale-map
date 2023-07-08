@@ -26,9 +26,14 @@ async function genKey(): Promise<string> {
   return key;
 }
 
+async function capitalizeFirstletter(str: any) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export default {
   hashPassword,
   comparePassword,
   genApiKey,
-  genKey
+  genKey,
+  capitalizeFirstletter
 };
