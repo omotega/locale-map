@@ -19,6 +19,12 @@ Locale is a developer tool for anyone who needs to know Nigeria, geographically 
 4. Execute yarn start and You will be able to access the API from localhost:8080
 
 
+### Api Documentation
+
+Link: https://app.theneo.io/locale/locale/locale
+
+
+
 ## APIs
 ---
 
