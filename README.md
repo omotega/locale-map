@@ -712,7 +712,7 @@ Success
 
 ### search state with localgovernment(lga)
 
-- Route: /api/location/searchatatewithlga
+- Route: /api/location/searchstatewithlga
 - Method: GET
 - Header
     - Authorization: apiKey
