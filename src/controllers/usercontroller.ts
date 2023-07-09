@@ -11,6 +11,7 @@ import {
 } from '../utils/constant';
 import helper from '../utils/helper';
 import { errorResponse, handleError, successResponse } from '../core/response';
+import { createToken } from '../auth/authUtils';
 
 async function signup(req: Request, res: Response) {
   try {
@@ -43,7 +44,10 @@ async function login(req: Request, res: Response) {
     // @ts-ignore
     const isPaasword = await helper.comparePassword(user?.password, password);
     if (!isPaasword) errorResponse(res, 400, INCORRECT_PASSWORD);
-    successResponse(res, 200, LOGIN_SUCCESSFUL, { user });
+    const accessTokenKey = await helper.genKey();
+    const refreshTokenKey = await helper.genKey();
+    const token = createToken(user, accessTokenKey, refreshTokenKey);
+    successResponse(res, 200, LOGIN_SUCCESSFUL, { user, token });
   } catch (error) {
     handleError(req, error);
     errorResponse(res, 500, SOMETHING_HAPPENED);

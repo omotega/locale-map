@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 import config from './env';
 
 dotenv.config();
-
+const REDIS_USERNAME = config.redisUsername;
+const REDIS_PORT = config.redisPort;
+const REDIS_HOST = config.redisHost;
+const REDIS_PASSWORD = config.redisPassword;
 const redisurl = config.redisUrl;
 
 class redisCache {

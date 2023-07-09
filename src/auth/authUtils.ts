@@ -29,7 +29,7 @@ export const validateTokenData = (payload: jwtPayloads): boolean => {
 };
 
 export const createToken = async (
-  user: Iuser,
+  user: Iuser | null,
   accessTokenKey: string,
   refreshTokenKey: string
 ) => {
@@ -37,7 +37,7 @@ export const createToken = async (
     new jwtPayloads(
       config.issuer,
       config.audience,
-      user._id?.toString() as string,
+      user?._id?.toString() as string,
       accessTokenKey,
       config.accessTokenValidity
     )
@@ -48,7 +48,7 @@ export const createToken = async (
     new jwtPayloads(
       config.issuer,
       config.audience,
-      user._id?.toString() as string,
+      user?._id?.toString() as string,
       refreshTokenKey,
       config.refreshTokenValidity
     )
