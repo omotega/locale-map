@@ -18,6 +18,8 @@ Locale is a developer tool for anyone who needs to know Nigeria, geographically 
 
 4. Execute yarn start and You will be able to access the API from localhost:8080
 
+5. yarn seed to populate your database with the json data.
+
 
 ### Api Documentation
 
