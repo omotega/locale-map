@@ -36,7 +36,6 @@ describe('POST /api/user/signup', () => {
     expect(body.data.user.user).toHaveProperty('_id');
     expect(hashSpy).toBeCalledTimes(1);
     expect(findByEmail).toBeCalledTimes(1);
-    console.log(body.data.user, 'THIS IS THE BODY OF THE REQUYES');
   });
 
   test('should return error if name field is empty', async () => {
