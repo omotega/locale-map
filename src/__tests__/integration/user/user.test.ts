@@ -36,6 +36,7 @@ describe('POST /api/user/signup', () => {
     expect(body.data.user.user).toHaveProperty('_id');
     expect(hashSpy).toBeCalledTimes(1);
     expect(findByEmail).toBeCalledTimes(1);
+    console.log(body.data.user, 'THIS IS THE BODY OF THE REQUYES');
   });
 
   test('should return error if name field is empty', async () => {
@@ -45,8 +46,8 @@ describe('POST /api/user/signup', () => {
     };
     const endpoint = '/api/user/signup';
     await api.post(endpoint).send(payload).expect(400);
-    expect(hashSpy).toBeCalledTimes(1);
-    expect(findByEmail).toBeCalledTimes(1);
+    expect(hashSpy).toBeCalledTimes(0);
+    expect(findByEmail).toBeCalledTimes(0);
   });
 
   test('should return error when the email field is empty', async () => {
@@ -56,8 +57,8 @@ describe('POST /api/user/signup', () => {
     };
     const endpoint = '/api/user/signup';
     await api.post(endpoint).send(payload).expect(400);
-    expect(hashSpy).toBeCalledTimes(1);
-    expect(findByEmail).toBeCalledTimes(1);
+    expect(hashSpy).toBeCalledTimes(0);
+    expect(findByEmail).toBeCalledTimes(0);
   });
 });
 
@@ -71,7 +72,7 @@ describe(' Post /api/user/login', () => {
     const { body } = await api.post(endpoint).send(payload).expect(200);
     expect(body.message).toBe(LOGIN_SUCCESSFUL);
     expect(verifySpy).toBeCalledTimes(1);
-    expect(findByEmail).toBeCalledTimes(2);
+    expect(findByEmail).toBeCalledTimes(1);
   });
 
   test('should return error message when email is missing', async () => {
@@ -80,8 +81,8 @@ describe(' Post /api/user/login', () => {
     };
     const endpoint = '/api/user/login';
     await api.post(endpoint).send(payload).expect(400);
-    expect(verifySpy).toBeCalledTimes(1);
-    expect(findByEmail).toBeCalledTimes(2);
+    expect(verifySpy).toBeCalledTimes(0);
+    expect(findByEmail).toBeCalledTimes(0);
   });
 
   test('should return error message when password is missing', async () => {
@@ -90,7 +91,7 @@ describe(' Post /api/user/login', () => {
     };
     const endpoint = '/api/user/login';
     await api.post(endpoint).send(payload).expect(400);
-    expect(verifySpy).toBeCalledTimes(1);
-    expect(findByEmail).toBeCalledTimes(2);
+    expect(verifySpy).toBeCalledTimes(0);
+    expect(findByEmail).toBeCalledTimes(0);
   });
 });
