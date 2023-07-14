@@ -2,7 +2,6 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 import supertest from 'supertest';
 import app from '../../../app';
-import Cache from '../../../config/redis';
 import { LOGIN_SUCCESSFUL } from '../../../utils/constant';
 import { hashSpy, verifySpy } from './mock';
 
@@ -11,7 +10,6 @@ const api = supertest(app);
 beforeAll(async () => {
   const mongoServer = await MongoMemoryServer.create();
   await mongoose.connect(mongoServer.getUri());
-  // Cache.connect();
 });
 afterAll(async () => {
   await mongoose.disconnect();
