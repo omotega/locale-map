@@ -9,7 +9,7 @@ function signUpValidationMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const payload = req.payload;
+  const payload = req.body;
   try {
     const validate = userValidation.signUpValidation(payload);
     if (validate.error)
@@ -21,4 +21,23 @@ function signUpValidationMiddleware(
   }
 }
 
-export default signUpValidationMiddleware;
+function loginValidationMiddleware(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const payload = req.body;
+  try {
+    const validate = userValidation.loginValidation(payload);
+    if (validate.error)
+      return validationErrors(res, 400, validate.error.details[0].message);
+    next();
+  } catch (error) {
+    handleError(req, error);
+    errorResponse(res, 500, SOMETHING_HAPPENED);
+  }
+}
+export default {
+  signUpValidationMiddleware,
+  loginValidationMiddleware
+};
